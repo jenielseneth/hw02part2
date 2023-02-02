@@ -7,7 +7,6 @@
 #include <omp.h>
 #include <vector>
 
-#define n 1
 // Use high resolution for benchmarking:
 // constexpr int WIDTH = 3840;
 // constexpr int HEIGHT = 2160 / 2;
@@ -31,7 +30,7 @@ void julia_set(void) {
     auto t0 = std::chrono::steady_clock::now();
 
     // TODO: Parallelize.
-    #pragma omp parallel for collapse(2) num_threads(n)
+    #pragma omp parallel for collapse(2)
     for (int i = 0; i < HEIGHT; ++i)
     for (int j = 0; j < WIDTH; ++j) {
         // Compute `w = z_0 = x + i y` for the given pixel (j, i).
